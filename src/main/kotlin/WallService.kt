@@ -19,12 +19,12 @@ object WallService {
         return false
     }
 
- /*   fun print() {
+    fun print() {
         for (post in posts) {
             println(post)
         }
         println("  NextId=$nextId")
-    }*/
+    }
 
     fun clear() {
         posts = emptyArray()
