@@ -5,27 +5,44 @@ data class Post(
     val date: Long,
     val text: String?,
     val friendsOnly: Boolean,
-    val comments: Comments,
+    val comments: Comments?,
+    val donut: Donut?,
     val likes: Likes?,
     val views: Views?,
     val canDelete: Boolean,
     val canEdit: Boolean,
     val isFavorite: Boolean,
-    val attachments : Array<Attachment>? = emptyArray(),
+    val attachments: Array<Attachment>? = emptyArray(),
     )
 
 data class Views(
     val count: Long
 )
-
-data class Comments(
-    val count: Int,
-    val canPost: Boolean,
-    val groupsCanPost: Boolean,
-    val canClose: Boolean,
-    val canOpen: Boolean
+data class Comment(
+    val id : Int,
+    val postId : Long,
+    val fromId : Int,
+    val date : Int,
+    val text : String,
+    val donut : Donut?,
+    val attachments : Array<Attachment>? = emptyArray(),
+    val parentsStack : Array<Int>? = emptyArray(),
+    val thread : Thread?
 )
-
+data class Comments(
+    val count : Int,
+    val canPost : Boolean,
+    val groupsCanPost : Boolean,
+    val canClose : Boolean,
+    val canOpen : Boolean
+)
+data class Donut(
+    val isDonut : Boolean,
+    val paidDuration : Int,
+    val placeholder : String,
+    val canPublishFreeCopy : Boolean,
+    val editMode : String
+)
 data class Likes(
     val count: Int,
     val userLikes: Boolean,

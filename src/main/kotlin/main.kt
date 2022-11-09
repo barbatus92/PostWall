@@ -52,6 +52,18 @@ fun main() {
         "owner_id_page_id",
         "www.post.ru",
     )
+    val comment1 = Comment(
+        74,
+        3,
+        14,
+        5_02_98,
+        "Hi people",
+        null,
+        null,
+        null,
+        null
+    )
+
     val attachmentNote1 = NoteAttachment(note1)
     val attachmentLink1 = LinkAttachment(link1)
     val attachmentGraffiti1 = GraffitiAttachment(graffiti1)
@@ -63,7 +75,8 @@ fun main() {
         12_12_2022,
         "Hello",
         false,
-        Comments(1, true, true, false, true),
+        null,
+        null,
         null,
         Views(5),
         true,
@@ -77,19 +90,25 @@ fun main() {
         13_12_2022,
         "My name is Alex",
         false,
-        Comments(3, true, true, false, true),
+        Comments(3,true,false, true, false),
        null,
+        null,
         Views(0),
         true,
         false,
         false,
         null
     )
-
-    WallService.add(post1)
-    WallService.add(post2)
-    WallService.print()
-
+    val service = WallService()
+    service.add(post1)
+    service.add(post2)
+    service.print()
+    service.createComment(comment1)
+    /*try {
+        WallService.createComment(comment1)
+    } catch (e: WallService.PostNotFoundException){
+        println(e.message)
+    }*/
 /*    if (WallService.update(post4)) WallService.print()
     if (WallService.update(post3)) WallService.print()*/
 }
